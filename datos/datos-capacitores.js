@@ -145,4 +145,29 @@ const preguntasCapacitores = [
         tipo: "texto",
         respuestaTexto: "94.45"
     },
+    {
+        id: "6",
+        enunciado: "Según el criterio de mínima tensión visto en clase, ¿Cuál es la máxima tensión aplicable?",
+        img: "../img/cap_circuito2.webp",
+        tipo: "radio",
+        shuffle: true,
+        opciones: [
+            { val: "a", txt: "50 V" },
+            { val: "b", txt: "16 V", esOk: true },
+            { val: "c", txt: "25 V" },
+            { val: "d", txt: "2,2 µF"},
+        ],
+    },
+    {
+        id: "7",
+        enunciado: "Según el criterio de mínima tensión visto en clase, ¿Cuál es la máxima tensión aplicable?",
+        img: "../img/cap_circuito1.webp",
+        tipo: "radio",
+        shuffle: true,
+        opciones: [
+            { val: "a", txt: "25 V" },
+            { val: "b", txt: "10 V", esOk: true },
+            { val: "c", txt: "16 V" },
+        ],
+    },
 ];
