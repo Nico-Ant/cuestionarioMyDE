@@ -12,10 +12,6 @@ body {
     color: #e0e0e0;
 }
 
-body:has(.header-top) {
-    padding-top: 80px;
-}
-
 h1 { 
     color: #2196F3; 
     text-align: center; 
@@ -51,6 +47,10 @@ h1 {
     box-sizing: border-box;
 }
 
+.tarjeta-menu h3 {
+    margin: 0;
+}
+
 .tarjeta-menu:hover {
     border-color: #2196F3;
     transform: translateY(-3px);
@@ -59,22 +59,15 @@ h1 {
 
 .tarjeta-menu.destacada {
     grid-column: 1 / -1; 
-    flex-direction: row; 
-    justify-content: space-between; 
-    border: 1.5px solid #ff9800;    
-    padding: 15px 20px; 
-    box-shadow: 0 0 10px rgba(255, 152, 0, 0.15); 
 }
 
 .tarjeta-menu.destacada h3 {
-    width: auto;      
-    flex: 1;          
-    font-size: 1rem; 
-    color: #ff9800;   
-    text-align: center;
-    margin: 0 10px;
-    text-transform: uppercase; 
-    letter-spacing: 1px;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.tarjeta-menu.destacada:hover h3 {
+    color: #2196F3; 
 }
 
 /* ============================================================
@@ -85,17 +78,13 @@ h1 {
     align-items: center;
     justify-content: center;
     background-color: #1e1e1e;
-    border-bottom: 2px solid #2196F3;
+    border-bottom: 3px solid #2196F3;
+    border-radius: 12px;
+    margin-bottom: 30px;
     padding: 15px 20px;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box; 
+    position: static; 
     z-index: 1000;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transform: translateZ(0); 
-    -webkit-transform: translateZ(0);
 }
 
 .titulo-examen {
@@ -337,19 +326,7 @@ label math, .feedback-res b math {
 }
 
 /* ============================================================
-   9. ESCRITORIO PC (Ajustes finos para pantallas grandes)
-   ============================================================ */
-@media (min-width: 768px) {
-    .tarjeta-menu.destacada {
-        padding: 20px 40px;
-        min-height: 100px; 
-    }
-    .sirena-gif { width: 50px; }
-    .tarjeta-menu.destacada h3 { font-size: 1.3rem; }
-}
-
-/* ============================================================
-   10. MEDIA QUERY - MÓVILES (Agrupado y ordenado)
+   9. MEDIA QUERY - MÓVILES (Agrupado y ordenado)
    ============================================================ */
 @media (max-width: 600px) {
     /* Base y Estructura */
@@ -357,13 +334,13 @@ label math, .feedback-res b math {
         padding: 15px; 
         padding-bottom: 160px;
     }
-    body:has(.header-top) {
-        padding-top: 110px;
-    }
     h1 { font-size: 1.4rem; }
 
     /* Barra Superior e Inferior */
-    .header-top { padding: 10px 15px; }
+    .header-top { 
+        padding: 10px 15px; 
+        margin-bottom: 20px; 
+    }
     .titulo-examen { font-size: 1.1rem; }
     
     .barra-inferior {
