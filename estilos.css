@@ -1,0 +1,413 @@
+/* ============================================================
+   1. BASE Y ESTRUCTURA GENERAL
+   ============================================================ */
+body { 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    line-height: 1.6; 
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px;
+    padding-bottom: 100px;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body:has(.header-top) {
+    padding-top: 80px;
+}
+
+h1 { 
+    color: #2196F3; 
+    text-align: center; 
+    margin-bottom: 30px; 
+}
+
+/* ============================================================
+   2. MENÚ PRINCIPAL (TARJETAS)
+   ============================================================ */
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 40px auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+.tarjeta-menu {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.tarjeta-menu:hover {
+    border-color: #2196F3;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+}
+
+.tarjeta-menu.destacada {
+    grid-column: 1 / -1; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    border: 1.5px solid #ff9800;    
+    padding: 15px 20px; 
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.15); 
+}
+
+.tarjeta-menu.destacada h3 {
+    width: auto;      
+    flex: 1;          
+    font-size: 1rem; 
+    color: #ff9800;   
+    text-align: center;
+    margin: 0 10px;
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+}
+
+/* ============================================================
+   3. BARRA SUPERIOR E INFERIOR (MODO EXAMEN)
+   ============================================================ */
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e1e1e;
+    border-bottom: 2px solid #2196F3;
+    padding: 15px 20px;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box; 
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transform: translateZ(0); 
+    -webkit-transform: translateZ(0);
+}
+
+.titulo-examen {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #2196F3;
+    text-align: center;
+}
+
+.barra-inferior {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #1e1e1e;
+    border-top: 2px solid #2196F3;
+    padding: 15px 20px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.6);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; 
+}
+
+/* ============================================================
+   4. BOTONES GLOBALES
+   ============================================================ */
+
+.btn-check {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    width: auto;
+}
+
+.btn-finalizar {
+    padding: 12px 30px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-finalizar:hover { background: #1976D2; }
+
+.btn-subir {
+    position: fixed;
+    bottom: 100px; 
+    right: 20px;
+    background: #252525;
+    color: #2196F3;
+    border: 2px solid #2196F3;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+/* ============================================================
+   5. COMPONENTES DEL CUESTIONARIO (PREGUNTAS)
+   ============================================================ */
+.seccion-titulo {
+    margin-top: 40px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #2196F3;
+    color: #2196F3;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.pregunta { 
+    background: #1e1e1e; 
+    padding: 20px; 
+    margin-bottom: 25px; 
+    border-radius: 10px; 
+    border-left: 5px solid #2196F3;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    overflow-wrap: break-word;
+}
+
+/* Formularios dentro de las preguntas */
+input[type="text"] { 
+    background: #2d2d2d;
+    color: white;
+    border: 1px solid #444;
+    padding: 12px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+label {
+    display: flex;
+    align-items: center; 
+    gap: 15px;
+    margin-bottom: 12px;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #252525; 
+    transition: background 0.2s;
+}
+
+label:hover, .label-opcion:hover { background-color: #333; }
+
+label math, .feedback-res b math {
+    font-size: 1.3rem; 
+}
+
+.label-opcion {
+    display: block;
+    background: #252525;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ============================================================
+   6. MENÚS DESPLEGABLES (SELECT-GRUPO)
+   ============================================================ */
+.select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.select-row {
+    display: flex;
+    align-items: center;
+    background-color: #252525; 
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.select-label {
+    width: 170px; 
+    font-weight: bold;
+    margin: 0; 
+    padding: 0;
+    background: transparent;
+    cursor: default;
+}
+
+.select-label:hover { background: transparent; }
+
+.select-input {
+    flex: 1; 
+    background: #2d2d2d; 
+    color: white;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    max-width: 250px;
+}
+
+.select-input:focus { border-color: #2196F3; }
+
+/* ============================================================
+   7. IMÁGENES
+   ============================================================ */
+.pregunta > img { 
+    display: block !important;
+    max-width: 300px !important; 
+    height: auto !important;
+    margin: 15px 0 !important; 
+    background-color: #ffffff;   
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.img-opcion {
+    display: block;      
+    max-width: 150px !important; 
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #ffffff; 
+    padding: 8px;
+    border: 1px solid #444;
+}
+
+.feedback-final img {
+    max-width: 100px !important; 
+    height: auto;
+    display: block;
+    margin-top: 5px;
+    background: white; 
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* ============================================================
+   8. FEEDBACK Y RESULTADOS
+   ============================================================ */
+.correcto { color: #4CAF50; font-weight: bold; }
+.incorrecto { color: #FF5252; font-weight: bold; }
+.parcial { color: #FF9800; font-weight: bold; }
+
+.feedback-final {
+    display: inline-block;
+    border: 1px solid #444;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+    background: #252525;
+}
+
+.feedback-res {
+    margin-top: 15px;
+    padding: 10px;
+    background: #252525;
+    border-radius: 5px;
+}
+
+/* ============================================================
+   9. ESCRITORIO PC (Ajustes finos para pantallas grandes)
+   ============================================================ */
+@media (min-width: 768px) {
+    .tarjeta-menu.destacada {
+        padding: 20px 40px;
+        min-height: 100px; 
+    }
+    .sirena-gif { width: 50px; }
+    .tarjeta-menu.destacada h3 { font-size: 1.3rem; }
+}
+
+/* ============================================================
+   10. MEDIA QUERY - MÓVILES (Agrupado y ordenado)
+   ============================================================ */
+@media (max-width: 600px) {
+    /* Base y Estructura */
+    body { 
+        padding: 15px; 
+        padding-bottom: 160px;
+    }
+    body:has(.header-top) {
+        padding-top: 110px;
+    }
+    h1 { font-size: 1.4rem; }
+
+    /* Barra Superior e Inferior */
+    .header-top { padding: 10px 15px; }
+    .titulo-examen { font-size: 1.1rem; }
+    
+    .barra-inferior {
+        flex-direction: column; 
+        padding: 12px 15px;
+        gap: 10px;
+    }
+    #resultado-final {
+        font-size: 1.1rem !important; 
+        text-align: center;
+        width: 100%; 
+    }
+
+    /* Botones */
+    .btn-check { width: 100%; display: block; }
+    .btn-finalizar { width: 100%; font-size: 1rem; padding: 10px; }
+    .btn-subir { bottom: 150px; }
+
+    /* Menú y Tarjetas */
+    .menu-container {
+        grid-template-columns: 1fr; 
+        padding: 0; 
+        width: 100%;
+    }
+    .tarjeta-menu {
+        width: 100%;       
+        margin: 0 auto;    
+        min-height: 80px;  
+    }
+
+    /* Selects (Preguntas) */
+    .select-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .select-label { width: 100%; }
+    .select-input { width: 100%; max-width: 100%; }
+
+    /* Feedback */
+    .feedback-res b {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .feedback-res b math { font-size: 1.2rem !important; }
+}

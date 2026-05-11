@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario - LED</title>
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+    <header class="header-top">
+        <h1 class="titulo-examen">LED</h1>
+    </header>
+
+    <div id="contenedor-preguntas"></div>
+
+    <script src="../datos/datos-led.js"></script>
+
+    <script src="../script.js"></script>
+
+    <script>
+        window.preguntas = preguntasLed;
+        window.onload = cargarExamen;
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario - Transformadores</title>
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+    <header class="header-top">
+        <h1 class="titulo-examen">Transformadores</h1>
+    </header>
+
+    <div id="contenedor-preguntas"></div>
+
+    <script src="../datos/datos-transformadores.js"></script>
+
+    <script src="../script.js"></script>
+
+    <script>
+        window.preguntas = preguntasTransformadores;
+        window.onload = cargarExamen;
+    </script>
+</body>
+</html>

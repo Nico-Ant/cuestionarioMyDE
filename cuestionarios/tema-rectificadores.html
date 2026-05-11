@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario - Rectificadores</title>
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+    <header class="header-top">
+        <h1 class="titulo-examen">Rectificadores</h1>
+    </header>
+
+    <div id="contenedor-preguntas"></div>
+
+    <script src="../datos/datos-rectificadores.js"></script>
+
+    <script src="../script.js"></script>
+
+    <script>
+        window.preguntas = preguntasRectificadores;
+        window.onload = cargarExamen;
+    </script>
+</body>
+</html>
