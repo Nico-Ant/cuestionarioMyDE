@@ -23,7 +23,7 @@ function cargarExamen() {
                 data-correct="${p.respuestaTexto || ''}"
                 data-aviso="${p.aviso || false}">
                 <p><strong>${p.enunciado}</strong></p>
-                ${p.img ? `<img src="${p.img}" style="max-width: 100%;">` : ''}
+                ${p.img && p.tipo !== "imagen-zonas" ? `<img src="${p.img}" style="max-width: 100%;">` : ''}
         `;
 
         if (p.tipo === "radio" || p.tipo === "checkbox") {
@@ -70,6 +70,63 @@ function cargarExamen() {
                         <span class="contenedor-icono"></span>
                     </div>`;
             });
+            html += `</div>`;
+        } else if (p.tipo === "imagen-zonas") {
+            html += `<div class="img-zonas-container">
+                        <img src="${p.img}" alt="Gráfico interactivo">`;
+            
+            p.zonas.forEach(zona => {
+                html += `
+                    <div class="zona-flotante" style="top: ${zona.top}; left: ${zona.left};">
+                        <select data-correct="${zona.correcta}" class="select-input select-chico">
+                            <option value="" disabled selected>---</option>`;
+                
+                zona.opciones.forEach(opt => {
+                    html += `<option value="${opt}">${opt}</option>`;
+                });
+                
+                html += `
+                        </select>
+                        <span class="contenedor-icono"></span>
+                    </div>`;
+            });
+            html += `</div>`;
+        } else if (p.tipo === "secuencia") {
+            const poolMezclado = mezclarArray([...p.pool]); 
+
+            html += `<div class="secuencia-container">`;
+            
+            p.correcta.forEach((correctValue, index) => {
+                // Estructuramos cada bloque con su flecha interna para controlarlo mejor en celulares
+                html += `
+                    <div class="bloque-completo">
+                        <div class="zona-secuencia">
+                            <select data-correct="${correctValue}" class="select-input select-secuencia">
+                                <option value="" disabled selected>---</option>`;
+                
+                poolMezclado.forEach(opt => {
+                    html += `<option value="${opt}">${opt}</option>`;
+                });
+                
+                html += `
+                            </select>
+                            <span class="contenedor-icono"></span>
+                        </div>
+                `;
+
+                if (index < p.correcta.length - 1) {
+                    html += `
+                        <span class="flecha-separadora">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>`;
+                }
+
+                html += `</div>`; // Cierra bloque-completo
+            });
+            
             html += `</div>`;
         }
 
@@ -188,7 +245,39 @@ function verificarEsta(boton) {
             estado = "parcial";
         }
 
-        textoFinalRespuesta = respuestasArray.join(", ");
+        // --- NUEVO: FEEDBACK VISUAL PARA LA IMAGEN CON ZONAS ---
+        const contZonas = p.querySelector('.img-zonas-container');
+        if (contZonas) {
+            // 1. Clonamos el contenedor entero de la imagen
+            const clon = contZonas.cloneNode(true);
+            
+            const selectsOriginales = contZonas.querySelectorAll('select');
+            const zonasFlotantesClon = clon.querySelectorAll('.zona-flotante');
+            
+            // 2. Reemplazamos cada menú por una etiqueta verde con la respuesta correcta
+            zonasFlotantesClon.forEach((zonaClon, i) => {
+                const correcta = selectsOriginales[i].dataset.correct;
+                
+                // Le damos diseño de "etiqueta correcta"
+                zonaClon.innerHTML = `<span style="padding: 4px 8px; font-size: 0.85rem; font-weight: bold; color: white; background-color: #4CAF50; border-radius: 4px; white-space: nowrap;">${correcta}</span>`;
+                
+                // Limpiamos los estilos oscuros de la caja contenedora clonada
+                zonaClon.style.border = "none";
+                zonaClon.style.background = "transparent";
+                zonaClon.style.boxShadow = "none";
+            });
+            
+            // 3. Achicamos el clon para que quede bien como "miniatura" en el feedback
+            clon.style.maxWidth = "350px"; 
+            clon.style.margin = "15px auto 0"; // Lo centramos
+            
+            // Lo inyectamos en el texto final
+            textoFinalRespuesta = "<br>" + clon.outerHTML;
+            
+        } else {
+            // Si es un grupo de selects normal (como el de los resistores), sigue mostrando texto
+            textoFinalRespuesta = respuestasArray.join(", ");
+        }
     }
 
     // IMPRESIÓN DEL RESULTADO
