@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario - BJT</title>
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+    <header class="header-top">
+        <h1 class="titulo-examen">BJT</h1>
+    </header>
+
+    <div id="contenedor-preguntas"></div>
+
+    <script src="../datos/datos-bjt.js"></script>
+
+    <script src="../script.js"></script>
+
+    <script>
+        window.preguntas = preguntasBjt;
+        window.onload = cargarExamen;
+    </script>
+</body>
+</html>

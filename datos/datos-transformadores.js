@@ -1,6 +1,6 @@
 const preguntasTransformadores = [
     {
-        id: "q114",
+        id: "1",
         enunciado: "¿Cuál es el 'primario' de un transformador?",
         tipo: "radio",
         shuffle: true,
@@ -13,7 +13,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "q116",
+        id: "2",
         enunciado: "¿Cómo se define la relación de transformación en un transformador?",
         tipo: "checkbox",
         shuffle: true,
@@ -43,7 +43,7 @@ const preguntasTransformadores = [
         ]
     },
     {
-        id: "q117",
+        id: "3",
         enunciado: "¿cuáles son las fases en los bobinados del secundario de un transformador con punto medio respecto al primario?",
         tipo: "radio",
         shuffle: true,
@@ -56,7 +56,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "q118",
+        id: "4",
         enunciado: "¿De qué transformador estaba hablando el docente de teoría, cuando algunos alumnos estaban interactuando en redes sociales?",
         tipo: "radio",
         shuffle: true,
@@ -69,7 +69,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "q120",
+        id: "5",
         enunciado: "Los transformadores de punto medio se llaman así porque todo el flujo magnético se concentra en un punto del núcleo.",
         tipo: "radio",
         opciones: [
@@ -78,7 +78,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "q121",
+        id: "6",
         enunciado: "Para convertir corriente continua es necesario un transformadores de punto medio.",
         tipo: "radio",
         opciones: [
@@ -87,7 +87,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "qd1",
+        id: "7",
         enunciado: "Un transformador cuenta con aislamiento galvánico entre primario y secundario.",
         tipo: "radio",
         opciones: [
@@ -96,7 +96,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "q12",
+        id: "8",
         enunciado: "¿Cómo se define la regulación de un transformador?",
         tipo: "radio",
         shuffle: true,
@@ -169,7 +169,7 @@ const preguntasTransformadores = [
         ]
     },
     {
-        id: "qd2",
+        id: "9",
         enunciado: "Conforme a lo visto en clase, ¿Cómo se especifica el secundario de un transformador utilizado en electrónica?",
         tipo: "radio",
         shuffle: true,
@@ -182,7 +182,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "qd3",
+        id: "10",
         enunciado: "¿De qué material se construyen los núcleos de los transformadores?",
         tipo: "radio",
         shuffle: true,
@@ -196,7 +196,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "qd4",
+        id: "11",
         enunciado: "¿Cuál de las siguientes aseveraciones es correcta?",
         tipo: "radio",
         opciones: [
@@ -210,7 +210,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "qd5",
+        id: "12",
         enunciado: "Para los transformadores vistos en clase, cuando se indica entrada 220V y salida 12V. ¿a qué tipo de magnitud se refieren los 12V?",
         tipo: "radio",
         shuffle: true,
@@ -223,7 +223,7 @@ const preguntasTransformadores = [
         ],
     },
     {
-        id: "qd6",
+        id: "13",
         enunciado: "¿Cómo se define el secundario de un transformador utilizado en electrónica?",
         tipo: "radio",
         shuffle: true,

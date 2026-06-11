@@ -35,7 +35,18 @@ function cargarExamen() {
                     const letraActual = String.fromCharCode(97 + index);
                     const valorInput = esVF ? opt.val : letraActual;
                     
-                    const imgHtml = opt.img ? `<br><img src="${opt.img}" style="max-height: 120px; display: block;">` : '';
+                    let imgHtml = '';
+                    if (opt.img) {
+                        if (opt.img.includes('.svg#')) {
+                            imgHtml = `
+                                <br>
+                                <svg style="height: 120px; width: 120px; display: block;">
+                                <use href="${opt.img}"></use>
+                                </svg>`;
+                        } else {
+                            imgHtml = `<br><img src="${opt.img}" style="max-height: 120px; display: block;">`;
+                        }
+                    }
                     const etiquetaTexto = esVF ? textoOpt : (textoOpt !== "" ? `${letraActual}) ${textoOpt}` : `${letraActual})`);
 
                     html += `
@@ -97,7 +108,6 @@ function cargarExamen() {
             html += `<div class="secuencia-container">`;
             
             p.correcta.forEach((correctValue, index) => {
-                // Estructuramos cada bloque con su flecha interna para controlarlo mejor en celulares
                 html += `
                     <div class="bloque-completo">
                         <div class="zona-secuencia">
@@ -124,16 +134,70 @@ function cargarExamen() {
                         </span>`;
                 }
 
-                html += `</div>`; // Cierra bloque-completo
+                html += `</div>`; 
             });
             
             html += `</div>`;
+        } else if (p.tipo === "drag-drop") {
+            html += `
+                <p class="instruccion-interactiva">
+                <span class="ayuda-pc">🖱️ Arrastrá la opción correcta al recuadro.</span>
+                <span class="ayuda-tactil">👆 Tocá la opción correcta y luego tocá el recuadro.</span>
+                </p>
+
+                <div class="img-zonas-container drag-drop-container">
+                <img src="${p.imgFondo}" alt="Diagrama base">
+
+                <div class="zona-drop" 
+            data-correct="${p.zonaDrop.correcta}" 
+            style="top: ${p.zonaDrop.top}; left: ${p.zonaDrop.left}; width: ${p.zonaDrop.width}; height: ${p.zonaDrop.height};"
+            ondragover="permitirDrop(event)"
+            ondragenter="entrarDrop(event)"
+            ondragleave="salirDrop(event)" 
+            ondrop="soltarItem(event, this)"
+            onclick="clickZonaDrop(this)">
+                </div>
+                </div>
+
+                <div class="opciones-drag-container">
+                ${p.opciones.map(opt => {
+                    let mediaElement = '';
+
+                    if (opt.img) {
+                        if (opt.img.includes('.svg#')) {
+                            mediaElement = `<svg style="width:100%; height:100%; pointer-events:none; color:#e0e0e0;"><use href="${opt.img}"></use></svg>`;
+                        } else {
+                            mediaElement = `<img src="${opt.img}" style="width:100%; height:100%; object-fit:contain; pointer-events:none;">`;
+                        }
+                    }
+
+                    return `
+                        <div id="drag-${indexPregunta}-${opt.id}" 
+                    data-id="${opt.id}" 
+                    class="item-drag" 
+                    draggable="true" 
+                    ondragstart="arrastrarItem(event)"
+                    ondragend="terminarArrastre(event)"
+                    onclick="seleccionarItem(this)">
+                        ${mediaElement}
+                        </div>`;
+                }).join('')}
+                </div>`;
         }
 
         html += `
-                <button class="btn-check" onclick="verificarEsta(this)" style="margin-top: 10px;">Verificar</button>
-                <p class="resultado" style="margin-top: 10px;"></p>
-            </div><hr>`;
+            <button class="btn-check" onclick="verificarEsta(this)" style="margin-top: 10px;">Verificar</button>
+            <p class="resultado" style="margin-top: 10px;"></p>`;
+
+        if (p.explicacion) {
+            html += `
+                <div class="explicacion-oculta" style="display: none; margin-top: 10px; padding: 12px; background: #2d2d2d; border-left: 4px solid #FF9800; border-radius: 4px;">
+                <strong>💡 Explicación / Fórmula:</strong><br>
+                ${p.explicacion}
+                </div>`;
+        }
+
+        html += `</div><hr>`;
 
         contenedor.innerHTML += html;
     });
@@ -144,7 +208,7 @@ function verificarEsta(boton) {
     const resultado = p.querySelector(".resultado");
     
     let puntajePregunta = 0;
-    let estado = "incorrecto"; // "correcto", "parcial", "incorrecto"
+    let estado = "incorrecto"; 
     let textoFinalRespuesta = "";
 
     p.querySelectorAll(".icon-feedback").forEach(el => el.remove());
@@ -245,38 +309,70 @@ function verificarEsta(boton) {
             estado = "parcial";
         }
 
-        // --- NUEVO: FEEDBACK VISUAL PARA LA IMAGEN CON ZONAS ---
         const contZonas = p.querySelector('.img-zonas-container');
-        if (contZonas) {
-            // 1. Clonamos el contenedor entero de la imagen
+        if (contZonas && !contZonas.classList.contains('drag-drop-container')) {
             const clon = contZonas.cloneNode(true);
-            
             const selectsOriginales = contZonas.querySelectorAll('select');
             const zonasFlotantesClon = clon.querySelectorAll('.zona-flotante');
             
-            // 2. Reemplazamos cada menú por una etiqueta verde con la respuesta correcta
             zonasFlotantesClon.forEach((zonaClon, i) => {
                 const correcta = selectsOriginales[i].dataset.correct;
-                
-                // Le damos diseño de "etiqueta correcta"
                 zonaClon.innerHTML = `<span style="padding: 4px 8px; font-size: 0.85rem; font-weight: bold; color: white; background-color: #4CAF50; border-radius: 4px; white-space: nowrap;">${correcta}</span>`;
-                
-                // Limpiamos los estilos oscuros de la caja contenedora clonada
                 zonaClon.style.border = "none";
                 zonaClon.style.background = "transparent";
                 zonaClon.style.boxShadow = "none";
             });
             
-            // 3. Achicamos el clon para que quede bien como "miniatura" en el feedback
             clon.style.maxWidth = "350px"; 
-            clon.style.margin = "15px auto 0"; // Lo centramos
-            
-            // Lo inyectamos en el texto final
+            clon.style.margin = "15px auto 0"; 
             textoFinalRespuesta = "<br>" + clon.outerHTML;
             
-        } else {
-            // Si es un grupo de selects normal (como el de los resistores), sigue mostrando texto
+        } else if (!contZonas) {
             textoFinalRespuesta = respuestasArray.join(", ");
+        }
+    }
+
+    // 4. VALIDACIÓN: DRAG AND DROP
+    const zonasDrop = p.querySelectorAll(".zona-drop");
+    if (zonasDrop.length > 0) {
+        let totalZonas = zonasDrop.length;
+        let aciertosDrop = 0;
+        let idsCorrectos = [];
+
+        zonasDrop.forEach(zona => {
+            const userVal = zona.dataset.user || "";
+            const correctVal = zona.dataset.correct;
+            idsCorrectos.push(correctVal); 
+
+            if (userVal === correctVal) {
+                aciertosDrop++;
+                zona.classList.add("drop-correcto");
+                zona.classList.remove("drop-incorrecto");
+            } else {
+                zona.classList.add("drop-incorrecto");
+                zona.classList.remove("drop-correcto");
+            }
+        });
+
+        puntajePregunta = aciertosDrop / totalZonas;
+        if (puntajePregunta === 1) estado = "correcto";
+        else if (puntajePregunta > 0) estado = "parcial";
+
+        let htmlRespuestas = '';
+        idsCorrectos.forEach(idCorrecto => {
+            const opcionCorrectaDOM = p.querySelector(`.item-drag[data-id="${idCorrecto}"]`);
+            if (opcionCorrectaDOM) {
+                htmlRespuestas += `
+                    <div style="width: 70px; height: 70px; background: #252525; padding: 5px; border-radius: 6px; border: 1px solid #444; margin-top: 10px; display: inline-block; margin-right: 10px;">
+                    ${opcionCorrectaDOM.innerHTML}
+                    </div>`;
+            }
+        });
+
+        if (htmlRespuestas !== '') {
+            textoFinalRespuesta = `Esta era la pieza correcta:<br>${htmlRespuestas}`;
+        } else {
+            textoFinalRespuesta = "Revisá los colores en el diagrama.";
         }
     }
 
@@ -291,6 +387,11 @@ function verificarEsta(boton) {
     }
 
     resultado.innerHTML += `<div class="feedback-res">La respuesta es: <b>${textoFinalRespuesta}</b></div>`;
+
+    const divExplicacion = p.querySelector(".explicacion-oculta");
+    if (divExplicacion) {
+        divExplicacion.style.display = "block";
+    }
 
     return puntajePregunta; 
 }
@@ -377,4 +478,65 @@ function irArriba() {
         top: 0, 
         behavior: 'smooth'
     });
+}
+
+function terminarArrastre(ev) {
+    ev.currentTarget.classList.remove("arrastrando");
+}
+
+function permitirDrop(ev) {
+    ev.preventDefault();
+}
+
+function entrarDrop(ev) {
+    ev.preventDefault();
+    ev.currentTarget.classList.add("zona-hover");
+}
+
+function salirDrop(ev) {
+    ev.currentTarget.classList.remove("zona-hover");
+}
+
+function soltarItem(ev, zona) {
+    ev.preventDefault();
+    zona.classList.remove("zona-hover"); 
+    
+    const idArrastrado = ev.dataTransfer.getData("text/plain");
+    const htmlArrastrado = ev.dataTransfer.getData("text/html");
+    
+    if (idArrastrado) {
+        zona.innerHTML = htmlArrastrado;
+        zona.dataset.user = idArrastrado;
+        zona.style.borderColor = "#2196F3";
+    }
+}
+
+let itemSeleccionado = null; 
+
+function seleccionarItem(elemento) {
+    document.querySelectorAll('.item-drag').forEach(el => el.classList.remove('seleccionado'));
+    elemento.classList.add('seleccionado');
+    
+    itemSeleccionado = {
+        id: elemento.dataset.id,
+        html: elemento.innerHTML 
+    };
+}
+
+function arrastrarItem(ev) {
+    ev.dataTransfer.setData("text/plain", ev.currentTarget.dataset.id);
+    ev.dataTransfer.setData("text/html", ev.currentTarget.innerHTML); 
+    
+    setTimeout(() => ev.currentTarget.classList.add("arrastrando"), 0);
+}
+
+function clickZonaDrop(zona) {
+    if (itemSeleccionado) {
+        zona.innerHTML = itemSeleccionado.html;
+        zona.dataset.user = itemSeleccionado.id;
+        zona.style.borderColor = "#2196F3";
+        
+        document.querySelectorAll('.item-drag').forEach(el => el.classList.remove('seleccionado'));
+        itemSeleccionado = null;
+    }
 }

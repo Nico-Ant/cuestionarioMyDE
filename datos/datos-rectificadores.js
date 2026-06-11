@@ -1,6 +1,6 @@
 const preguntasRectificadores = [
     {
-        id: "q131",
+        id: "1",
         enunciado: "¿Cuántos diodos conducen simultáneamente en un puente Graez?",
         tipo: "radio",
         shuffle: true,
@@ -13,7 +13,7 @@ const preguntasRectificadores = [
         ],
     },
     {
-        id: "q132",
+        id: "2",
         enunciado: "Un rectificador es un dispositivo que",
         tipo: "radio",
         shuffle: true,
@@ -27,7 +27,7 @@ const preguntasRectificadores = [
         ],
     },
     {
-        id: "q133",
+        id: "3",
         enunciado: "Conforme a lo visto en clase: ¿Qué factores de seguridad se recomiendan para diodos rectificadores?",
         tipo: "radio",
         shuffle: true,
@@ -40,7 +40,7 @@ const preguntasRectificadores = [
         ],
     },
     {
-        id: "q134",
+        id: "4",
         enunciado: "Identifique una ventaja de utilizar un rectificador tipo puente graetz en lugar de uno de onda completa con transformador con punto medio",
         tipo: "radio",
         shuffle: true,
@@ -53,7 +53,7 @@ const preguntasRectificadores = [
         ],
     },
     {
-        id: "q135",
+        id: "5",
         enunciado: "¿Cuál de las siguientes aseveraciones es correcta? (Seleccione una)",
         tipo: "radio",
         opciones: [
@@ -67,7 +67,7 @@ const preguntasRectificadores = [
         ],
     },
     {
-        id: "q1355",
+        id: "6",
         enunciado: "¿Cuál de las siguientes aseveraciones es correcta? (Seleccione una)",
         tipo: "radio",
         opciones: [
@@ -81,7 +81,7 @@ const preguntasRectificadores = [
         ],
     },
     {
-        id: "q136",
+        id: "7",
         enunciado: "En un rectificador de media onda el diodo debe conectarse en la salida del punto homólogo del transformador.",
         tipo: "radio",
         opciones: [
@@ -90,7 +90,7 @@ const preguntasRectificadores = [
         ],
     },
     {
-        id: "q137",
+        id: "8",
         enunciado: "El valor medio de una señal es",
         tipo: "radio",
         shuffle: true,
@@ -104,13 +104,13 @@ const preguntasRectificadores = [
         ],
     },
     {
-        id: "q137",
+        id: "9",
         enunciado: "Un rectificador de media onda está conectado a una fuente de alterna de 20 V y alimenta a una carga de 470 Ω ¿Qué corriente circulará por el diodo? Expresar el resultado en mA. No poner las unidades, solo el valor numérico.",
         tipo: "texto",
         respuestaTexto: "19,16",
     },
     {
-        id: "q138",
+        id: "10",
         enunciado: "¿Cuál es la función de una fuente?",
         tipo: "radio",
         shuffle: true,
@@ -123,7 +123,7 @@ const preguntasRectificadores = [
         ],
     },
     {
-        id: "q139",
+        id: "11",
         enunciado: "¿Cuál es secuencia correcta de las partes de una fuente de alimentación?",
         tipo: "radio",
         shuffle: true,

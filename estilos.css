@@ -382,6 +382,96 @@ label math, .feedback-res b math {
 }
 
 /* ============================================================
+   TIPO PREGUNTA: DRAG AND DROP
+   ============================================================ */
+.zona-drop {
+    position: absolute;
+    border: 2px dashed #777;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zona-drop.zona-hover {
+    background-color: rgba(33, 150, 243, 0.2);
+    border-color: #2196F3;
+}
+
+.opciones-drag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.item-drag {
+    width: 80px;
+    height: 80px;
+    background: #252525;
+    padding: 8px;
+    border: 2px solid #444;
+    border-radius: 6px;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.item-drag:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+}
+
+.item-drag.arrastrando {
+    opacity: 0.4;
+    border-color: #2196F3;
+}
+
+.item-drag.seleccionado {
+    border-color: #FF9800;
+    background-color: rgba(255, 152, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+}
+
+.drag-drop-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   AJUSTES EXTRA PARA CELULARES
+   ============================================================ */
+@media (max-width: 600px) {
+    .item-drag {
+        width: 60px; 
+        height: 60px;
+        padding: 5px;
+    }
+    
+    .opciones-drag-container {
+        gap: 10px;
+    }
+}
+
+.zona-drop.drop-correcto {
+    border-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.2);
+}
+
+.zona-drop.drop-incorrecto {
+    border-color: #FF5252;
+    background-color: rgba(255, 82, 82, 0.2);
+}
+
+/* ============================================================
    TIPO PREGUNTA: SECUENCIA (ELÁSTICO, UNA LÍNEA, SIN SCROLL)
    ============================================================ */
 .secuencia-container {

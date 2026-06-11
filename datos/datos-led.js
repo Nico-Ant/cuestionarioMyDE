@@ -1,6 +1,6 @@
 const preguntasLed = [
     {
-        id: "q128",
+        id: "1",
         enunciado: "La luz se produce cuando un protón salta de una órbita de mayor potencial a una órbita de menor potencial.",
         tipo: "radio",
         opciones: [
@@ -9,7 +9,7 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q129",
+        id: "2",
         enunciado: "¿Qué material se utiliza para generar la emisión ultravioleta en los leds?",
         tipo: "radio",
         shuffle: true,
@@ -21,13 +21,13 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q130",
+        id: "3",
         enunciado: "Especificar el valor de resistencia, normalizada en la serie E12, de un resistor limitador utilizado en un circuito que polariza un LED estándar a partir de una fuente de 25 V. <br>Utilice el criterio del \"valor más próximo\". Exprese el resultado en Ω (ohms) sin multiplicador.",
         tipo: "texto",
         respuestaTexto: "1200"
     },
     {
-        id: "q131",
+        id: "4",
         enunciado: "Conforme lo visto en clase, ¿cuáles son los parámetros más comunes para polarizar un LED?",
         tipo: "radio",
         shuffle: true,
@@ -40,7 +40,7 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q132",
+        id: "5",
         enunciado: "¿Cómo se distingue el cátodo de un LED?",
         tipo: "radio",
         shuffle: true,
@@ -53,7 +53,7 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q133",
+        id: "6",
         enunciado: "El arseniuro de galio se emplea para la fabricación de LED infrarrojo",
         tipo: "radio",
         opciones: [
@@ -62,7 +62,7 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q134",
+        id: "7",
         enunciado: "Es posible saber el color de un LED con encapsulado translucido si se lo ilumina con luz ultravioleta",
         tipo: "radio",
         opciones: [
@@ -71,7 +71,7 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q135",
+        id: "8",
         enunciado: "La energía de un fotón esta limitada por",
         tipo: "radio",
         shuffle: true,
@@ -84,14 +84,14 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q136",
+        id: "9",
         enunciado: "¿Qué valor teórico debería tener un resistor para polarizar un led común con una fuente de 16 V?",
         tipo: "texto",
         respuestaTexto: "700 Ω",
         aviso: true
     },
     {
-        id: "q137",
+        id: "10",
         enunciado: "El ancho de la banda prohibida en un semiconductor usado para LED, determina:",
         tipo: "checkbox",
         shuffle: true,
@@ -104,7 +104,7 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q138",
+        id: "11",
         enunciado: "Un LED produce luz visible cuando cuando se polariza en directa y luz ultravioleta cuando se polariza en inversa",
         tipo: "radio",
         opciones: [
@@ -113,19 +113,19 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q139",
+        id: "12",
         enunciado: "Especificar el valor de resistencia, normalizada en la serie E12, de un resistor limitador utilizado en un circuito que polariza un LED estándar apartir de una fuente de 5 V.<br>Utilice el criterio del \"valor más próximo\".<br>Exprese el resultado en Ω (ohms) sin multiplicador",
         tipo: "texto",
         respuestaTexto: "150"
     },
     {
-        id: "q140",
+        id: "13",
         enunciado: "Especificar el valor de resistencia, normalizada en la serie E12, de un resistor limitador utilizado en un circuito que polariza un LED estándar apartir de una fuente de 19 V.<br>Utilice el criterio del \"valor más próximo\".<br>Exprese el resultado en Ω (ohms) sin multiplicador.",
         tipo: "texto",
         respuestaTexto: "820"
     },
     {
-        id: "q141",
+        id: "14",
         enunciado: "Es posible saber el color de un LED con encapsulado translucido si se lo ilumina con luz solar",
         tipo: "radio",
         opciones: [
@@ -134,7 +134,7 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q142",
+        id: "15",
         enunciado: "La luz se produce cuando un electrón salta de una órbita de mayor potencial a una órbita de menor potencial.",
         tipo: "radio",
         opciones: [
@@ -143,7 +143,7 @@ const preguntasLed = [
         ],
     },
     {
-        id: "q143",
+        id: "16",
         enunciado: "El terminal más largo de un LED nuevo corresponde al ánodo.",
         tipo: "radio",
         opciones: [

@@ -119,7 +119,7 @@ const preguntasCapacitores = [
         ]
     },
     {
-        id: "9",
+        id: "12",
         enunciado: "¿Con qué colores se identifica un capacitor de poliéster de 150 nF?",
         tipo: "radio",
         shuffle: true,
@@ -132,21 +132,21 @@ const preguntasCapacitores = [
         ],
     },
     {
-        id: "5",
+        id: "13",
         enunciado: "¿Cuánto tiempo transcurre hasta que la tensión Vo llegue a 7 V, suponiendo una carga inicial del capacitor de 18 V. C1=470 µF; R1=1000 Ω. (expresar el resultado en [ms] sin escribir la unidad, solo el número)",
         img: "../img/circ_capacitor.webp",
         tipo: "texto",
         respuestaTexto: "443.90"
     },
     {
-        id: "5",
+        id: "14",
         enunciado: "¿Cuánto tiempo transcurre hasta que la tensión Vo llegue a 7 V, suponiendo una carga inicial del capacitor de 18 V. C1=100 µF; R1=1000 Ω. (expresar el resultado en [ms] sin escribir la unidad, solo el número)",
         img: "../img/circ_capacitor.webp",
         tipo: "texto",
         respuestaTexto: "94.45"
     },
     {
-        id: "6",
+        id: "15",
         enunciado: "Según el criterio de mínima tensión visto en clase, ¿Cuál es la máxima tensión aplicable?",
         img: "../img/cap_circuito2.webp",
         tipo: "radio",
@@ -159,7 +159,7 @@ const preguntasCapacitores = [
         ],
     },
     {
-        id: "7",
+        id: "16",
         enunciado: "Según el criterio de mínima tensión visto en clase, ¿Cuál es la máxima tensión aplicable?",
         img: "../img/cap_circuito1.webp",
         tipo: "radio",
