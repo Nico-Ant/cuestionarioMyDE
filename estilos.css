@@ -716,3 +716,28 @@ label math, .feedback-res b math {
         width: 100%;
     }
 }
+
+/* ============================================================
+   FIX PARA FÓRMULAS LARGAS EN MÓVILES
+   ============================================================ */
+.explicacion-oculta {
+    overflow-x: auto; /* Permite deslizar horizontalmente si el contenido desborda */
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; /* Hace que el deslizamiento sea fluido en celulares táctiles */
+}
+
+/* Opcional: Para que la barra de scroll se vea más estilizada en modo oscuro (en navegadores Webkit) */
+.explicacion-oculta::-webkit-scrollbar {
+    height: 8px;
+}
+.explicacion-oculta::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 4px;
+}
+.explicacion-oculta::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+.explicacion-oculta::-webkit-scrollbar-thumb:hover {
+    background: #FF9800;
+}

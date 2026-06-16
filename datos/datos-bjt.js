@@ -75,8 +75,95 @@ const preguntasBjt = [
 		id: "6",
 		enunciado: "Calcular Rb de un transistor que trabajará en conmutación para accionar una lámpara de 11 W/17 V. Vcc = 17 V; Vbb = 6 V; B = 135. Expresar el resultado en ohms. Escribir solo el valor numérico sin unidad. Redondear a 2 decimales",
 		tipo: "texto",
-		respuestaTexto: "552,89",
-		explicacion: `<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>R</mi><mi>b</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>V</mi><mrow><mi>b</mi><mi>b</mi></mrow></msub><mo>-</mo><mn>0</mn><mo>,</mo><mn>7</mn><mspace width="thickmathspace"/><mi>V</mi></mrow><mrow><mn>2</mn><mo>&#8901;</mo><mfrac><mi>P</mi><msub><mi>V</mi><mrow><mi>c</mi><mi>c</mi></mrow></msub></mfrac></mrow></mfrac><mo>&#8901;</mo><mi>&#946;</mi><mo>=</mo><mfrac><mrow><mn>6</mn><mspace width="thickmathspace"/><mi>V</mi><mo>-</mo><mn>0</mn><mo>,</mo><mn>7</mn><mspace width="thickmathspace"/><mi>V</mi></mrow><mrow><mn>2</mn><mo>&#8901;</mo><mfrac><mrow><mn>11</mn><mspace width="thickmathspace"/><mi>W</mi></mrow><mrow><mn>17</mn><mspace width="thickmathspace"/><mi>V</mi></mrow></mfrac></mrow></mfrac><mo>&#8901;</mo><mn>135</mn><mo>=</mo><mn>552</mn><mo>,</mo><mn>89</mn></math>`,
+		respuestaTexto: "552,89 | 331,73",
+		explicacion: `
+			<p>Aclaración:<br>Para estos ejercicios parece que toma válido de las 2 siguientes maneras, solo en uno de todos los ejercicos vi que tomó como incorrecto el resultado multiplicando por 2. Y en las respuestas como feedback siempre da el resultado de multiplicar la corriente por 10/3.<br>Así que si queres ir por lo seguro usá 10/3.</p>
+			
+			<strong>Opción A: Multiplicando la corriente por 2</strong>
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				<msub><mi>R</mi><mi>b</mi></msub><mo>=</mo>
+				<mfrac>
+				  <mrow>
+					<msub>
+					  <mi>V</mi>
+					  <mrow>
+						<mi>b</mi>
+						<mi>b</mi>
+					  </mrow>
+					</msub>
+					<mo>−</mo>
+					<mn>0,7</mn>
+					<mi>V</mi>
+				  </mrow>
+				  <mrow>
+					<mn>2</mn>
+					<mo>⋅</mo>
+					<mfrac>
+					  <mi>P</mi>
+					  <msub>
+						<mi>V</mi>
+						<mrow>
+						  <mi>c</mi>
+						  <mi>c</mi>
+						</mrow>
+					  </msub>
+					</mfrac>
+				  </mrow>
+				</mfrac>
+				<mo>⋅</mo>
+				<mi>β</mi><mo>=</mo>
+				<mfrac>
+					<mrow><mn>6</mn><mspace width="thickmathspace"/><mi>V</mi><mo>-</mo><mn>0,7</mn><mspace width="thickmathspace"/><mi>V</mi></mrow>
+					<mrow><mn>2</mn><mo>&#8901;</mo><mfrac><mrow><mn>11</mn><mspace width="thickmathspace"/><mi>W</mi></mrow><mrow><mn>17</mn><mspace width="thickmathspace"/><mi>V</mi></mrow></mfrac></mrow>
+				</mfrac>
+				<mo>&#8901;</mo><mn>135</mn><mo>=</mo><mn>552,89</mn><mspace width="thickmathspace"/><mo>&#937;</mo>
+			</math>
+
+			<br><hr style="border-color: #444;"><br>
+
+			<strong>Opción B: Multiplicando la corriente por 10/3</strong>
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				<msub><mi>R</mi><mi>b</mi></msub><mo>=</mo>
+			<mfrac>
+				  <mrow>
+					<msub>
+					  <mi>V</mi>
+					  <mrow>
+						<mi>b</mi>
+						<mi>b</mi>
+					  </mrow>
+					</msub>
+					<mo>−</mo>
+					<mn>0,7</mn>
+					<mi>V</mi>
+				  </mrow>
+				  <mrow>
+					<mfrac><mn>10</mn><mn>3</mn></mfrac>
+					<mo>⋅</mo>
+					<mfrac>
+					  <mi>P</mi>
+					  <msub>
+						<mi>V</mi>
+						<mrow>
+						  <mi>c</mi>
+						  <mi>c</mi>
+						</mrow>
+					  </msub>
+					</mfrac>
+				  </mrow>
+				</mfrac>
+				<mo>⋅</mo>
+				<mi>β</mi><mo>=</mo>
+				<mfrac>
+					<mrow><mn>6</mn><mspace width="thickmathspace"/><mi>V</mi><mo>-</mo><mn>0,7</mn><mspace width="thickmathspace"/><mi>V</mi></mrow>
+					<mrow>
+						<mfrac><mn>10</mn><mn>3</mn></mfrac>
+						<mo>&#8901;</mo><mfrac><mrow><mn>11</mn><mspace width="thickmathspace"/><mi>W</mi></mrow><mrow><mn>17</mn><mspace width="thickmathspace"/><mi>V</mi></mrow></mfrac>
+					</mrow>
+				</mfrac>
+				<mo>&#8901;</mo><mn>135</mn><mo>=</mo><mn>331,73</mn><mspace width="thickmathspace"/><mo>&#937;</mo>
+			</math>
+		`,
 	},
 	{
 		id: "7",
@@ -143,9 +230,16 @@ const preguntasBjt = [
 	},
 	{
 		id: "12",
-		enunciado: "¿En qué zona tiene que trabajar un BJT para amplificar una señal de corriente alterna?",
-		tipo: "texto",
-		respuestaTexto: "zona activa"
+		enunciado: "¿En qué zona tiene que trabajar un BJT (Transistor de Unión Bipolar), para amplificar una seña de corriente alterna?",
+		tipo: "radio",
+		shuffle: true,
+        opciones: [
+            { val: "a", txt: "zona de corte" },
+            { val: "b", txt: "zona activa", esOk: true },
+            { val: "c", txt: "zona de saturación" },
+            { val: "d", txt: "zona de 220 V" },
+            { val: "e", txt: "zona de corte y saturación" },
+        ],
 	},
 	{
 		id: "13",
@@ -196,6 +290,86 @@ const preguntasBjt = [
             { val: "b", txt: "1=e, 2=b, 3=c", },
             { val: "b", txt: "1=b, 2=c, 3=e", },
             { val: "b", txt: "1=c, 2=b, 3=e", },
+        ],
+	},
+	{
+		id: "18",
+		enunciado: "¿Cuál es el símbolo de un transitor NPN?",
+		tipo: "radio",
+		shuffle: true,
+        opciones: [
+            { val: "a", txt: "", img: "../img/transitor_symbol.svg#pnp", },
+            { val: "b", txt: "", img: "../img/transitor_symbol.svg#npn", esOk: true },
+            { val: "c", txt: "", img: "../img/transitor_symbol.svg#transistor1", },
+            { val: "d", txt: "", img: "../img/transitor_symbol.svg#transistor2", },
+            { val: "e", txt: "", img: "../img/transitor_symbol.svg#transistor3", },
+        ],
+	},
+	{
+		id: "19",
+		enunciado: "¿La variación de qué parámetro desplaza el punto Q sobre la recta de carga?",
+		img: "../img/grafico2.webp",
+		tipo: "radio",
+		shuffle: true,
+        opciones: [
+            { val: "a", txt: "la ganancia de corriente β o hFE" },
+            { val: "b", txt: "la Vcc aplicada", },
+            { val: "c", txt: "la Ib", esOk: true},
+            { val: "d", txt: "la resistencia de carga" },
+            { val: "e", txt: "la amplitud de la señar de entrada" },
+        ],
+	},
+	{
+		id: "20",
+		enunciado: "¿La variación de qué parámetro produce un cambio en la pendiente de la recta de carga?",
+		img: "../img/grafico3.webp",
+		tipo: "radio",
+		shuffle: true,
+        opciones: [
+            { val: "a", txt: "la ganancia de corriente β o hFE" },
+            { val: "b", txt: "la Vcc aplicada" },
+            { val: "c", txt: "la Ib" },
+            { val: "d", txt: "la resistencia de carga", esOk: true },
+            { val: "e", txt: "la amplitud de la señar de entrada" },
+        ],
+	},
+	{
+		id: "21",
+		enunciado: "Las curvas característica de entrada de un BJT se obtiene con:",
+		tipo: "radio",
+		shuffle: true,
+        opciones: [
+            { val: "a", txt: "Vcb constante" },
+            { val: "b", txt: "Vce lineal ascendente" },
+            { val: "c", txt: "Vce constante", esOk: true },
+            { val: "d", txt: "Vcb unitario" },
+            { val: "e", txt: "Icb constante" },
+        ],
+	},
+	{
+		id: "22",
+		enunciado: "¿Cómo se llaman las zonas de las curvas características de salida de los BJT?",
+		img: "../img/zonas-bjt.webp",
+		tipo: "radio",
+		shuffle: true,
+        opciones: [
+            { val: "a", txt: "1. trabajo; 2. nula; 3. continua" },
+            { val: "b", txt: "1. activa; 2. corte; 3. saturación", esOk: true},
+            { val: "c", txt: "1. lineal; 2. corte; 3. confección" },
+            { val: "d", txt: "1. constante; 2. nula; 3. ideal" },
+            { val: "e", txt: "1. activa; 2. pasiva; 3. inactiva" },
+        ],
+	},
+	{
+		id: "23",
+		enunciado: "¿Por qué se suele colocar un capacitor a la entrada y a la salida de un transistor trabajando como amplificador de CA?",
+		tipo: "radio",
+		shuffle: true,
+        opciones: [
+            { val: "a", txt: "para bloquear la CC", esOk: true },
+            { val: "b", txt: "para disminuir el rizado" },
+            { val: "c", txt: "para compensar la descargar de la batería" },
+            { val: "d", txt: "para compensar el cos <mi>&#x3C6;</mi>" },
         ],
 	},
 ]

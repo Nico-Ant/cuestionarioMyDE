@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario - Primer parcial</title>
+    <link rel="stylesheet" href="../estilos.css">
+
+    <style>
+        .btn-check {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-top">
+        <h1 class="titulo-examen">Segundo Parcial</h1>
+    </header>
+
+    <div id="contenedor-preguntas"></div>
+
+    <script src="../datos/datos-zener.js"></script>
+    <script src="../datos/datos-bjt.js"></script>
+
+    <script src="../script.js"></script>
+
+    <button id="btn-subir" class="btn-subir" onclick="irArriba()" title="Ir arriba">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <div class="barra-inferior">
+        <button id="btn-final" class="btn-finalizar" onclick="verificarTodo()">Verificar todo</button>
+        <div id="resultado-final" style="font-size: 1.3rem; font-weight: bold; margin: 0;"></div>
+    </div>
+
+    <script>
+        window.preguntas = [
+            ...(typeof preguntasZener !== 'undefined' ? preguntasZener : []),
+            ...(typeof preguntasBjt !== 'undefined' ? preguntasBjt : []),
+        ];
+
+        // Mezclamos el orden de las preguntas
+        mezclarArray(window.preguntas);
+
+        // Cargamos el examen
+        window.onload = cargarExamen;
+    </script>
+</body>
+</html>

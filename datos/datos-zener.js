@@ -91,9 +91,9 @@ const preguntasZener = [
     },
     {
         id: "9",
-        enunciado: "Para que un circuito integrado LM78xx pueda regular la tensión de salida, la tensión de entrada debe ser por lo menos __ mayor a la tensión de salida.",
+        enunciado: "Para que un circuito integrado LM78xx pueda regular la tensión de salida, la tensión de entrada debe ser por lo menos __ V mayor a la tensión de salida.",
         tipo: "texto",
-        respuestaTexto: "2 V"
+        respuestaTexto: "2"
     },
     {
         id: "12",
@@ -130,5 +130,49 @@ const preguntasZener = [
         enunciado: "Para seleccionar un diodo zener el primer parámetro a considerar es la tensión de:",
         tipo: "texto",
         respuestaTexto: "Zener"
+    },
+    {
+        id: "16",
+        enunciado: "Para que un circuito integrado LM78xx pueda regular la tensión de salida, la tensión de entrada debe ser por lo menos:",
+        tipo: "radio",
+        shuffle: true,
+        opciones: [
+            { val: "a", txt: "igual a la tensión" },
+            { val: "b", txt: "igual a la caída de tensión en el capacitor", },
+            { val: "c", txt: "2 a 3 V mayor a la tensión de salida", esOk: true },
+            { val: "d", txt: "2 a 3 V menor a la tensión del capacitor" },
+            { val: "e", txt: "superior a la caída en los diodos" }
+        ],
+    },
+    {
+        id: "18",
+        enunciado: "¿Qué factor de ripple tiene una fuente 220 V/24 V con rectificador de media onda y filtro capacitivo de 2200 µF, que entrega una corriente de I = 400 mA?<br>Utilizar aproximación sinusoidal. Expresar el resultado como porcentaje.",
+        tipo: "texto",
+        respuestaTexto: "5,36 %",
+		explicacion: `
+			<math display="block" class="tml-display" style="display:block math;"><mstyle mathsize="1.2000em"><mtext>Factor de Ripple</mtext><mo>=</mo><mfrac><mfrac><msub><mi>I</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><mrow><mn>2</mn><mo>⋅</mo><msqrt><mn>2</mn></msqrt><mo>⋅</mo><mi>f</mi><mo>⋅</mo><mi>C</mi></mrow></mfrac><msub><mi>V</mi><mrow><mi>s</mi><mi>a</mi><mi>l</mi></mrow></msub></mfrac><mo>⋅</mo><mn>100</mn><mo>=</mo><mfrac><mfrac><mrow><mn>400</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>3</mn></mrow></msup><mi>A</mi></mrow><mrow><mn>2</mn><mo>⋅</mo><msqrt><mn>2</mn></msqrt><mo>⋅</mo><mn>50</mn><mtext> </mtext><mtext>hz</mtext><mo>⋅</mo><mn>2200</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>6</mn></mrow></msup><mi>F</mi></mrow></mfrac><mrow><mn>24</mn><mtext> </mtext><mi>V</mi></mrow></mfrac><mo>⋅</mo><mn>100</mn><mo>=</mo><mn>5,36</mn><mi>%</mi></mstyle></math>
+		`,
+    },
+    {
+        id: "19",
+        enunciado: "¿Qué factor de ripple tiene una fuente 220 V/24 V con rectificador de onda completa y filtro capacitivo de 3 µF, que entrega una corriente de I = 8,8 mA?<br>Utilizar aproximación sinusoidal. Expresar el resultado como porcentaje.",
+        tipo: "texto",
+        respuestaTexto: "43,21 %",
+		explicacion: `
+			<math display="block" class="tml-display" style="display:block math;"><mstyle mathsize="1.2000em"><mrow><mtext>Factor de Ripple</mtext><mo>=</mo><mfrac><mfrac><msub><mi>I</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><mrow><mn>2</mn><mo>⋅</mo><msqrt><mn>2</mn></msqrt><mo>⋅</mo><mn>2</mn><mo>⋅</mo><mi>f</mi><mo>⋅</mo><mi>C</mi></mrow></mfrac><msub><mi>V</mi><mrow><mi>s</mi><mi>a</mi><mi>l</mi></mrow></msub></mfrac><mo>⋅</mo><mn>100</mn><mo>=</mo><mfrac><mfrac><mrow><mn>8,8</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>3</mn></mrow></msup><mi>A</mi></mrow><mrow><mn>2</mn><mo>⋅</mo><msqrt><mn>2</mn></msqrt><mo>⋅</mo><mn>2</mn><mo>⋅</mo><mn>50</mn><mtext> </mtext><mtext>hz</mtext><mo>⋅</mo><mn>3</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>6</mn></mrow></msup><mi>F</mi></mrow></mfrac><mrow><mn>24</mn><mtext> </mtext><mi>V</mi></mrow></mfrac><mo>⋅</mo><mn>100</mn><mo>=</mo><mn>43,21</mn><mi>%</mi></mrow></math>
+			<br>
+			<math display="block" class="tml-display" style="display:block math;"><mstyle mathsize="1.2000em"><mn>2</mn><mo>⋅</mo><mi>f</mi><mo stretchy="false">→</mo><mtext>onda completa</mtext></mstyle></math>
+		`,
+    },
+    {
+        id: "20",
+        enunciado: "¿Qué factor de ripple tiene una fuente 220 V/10 V con rectificador de onda completa y filtro capacitivo de 2,4 µF, que entrega una corriente de I = 2,9 mA?<br>Utilizar aproximación sinusoidal. Expresar el resultado como porcentaje.",
+        tipo: "texto",
+        respuestaTexto: "42,72 %",
+		explicacion: `
+			<math display="block" class="tml-display" style="display:block math;"><mstyle mathsize="1.2000em"><mtext>Factor de Ripple</mtext><mo>=</mo><mfrac><mfrac><msub><mi>I</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><mrow><mn>2</mn><mo>⋅</mo><msqrt><mn>2</mn></msqrt><mo>⋅</mo><mn>2</mn><mo>⋅</mo><mi>f</mi><mo>⋅</mo><mi>C</mi></mrow></mfrac><msub><mi>V</mi><mrow><mi>s</mi><mi>a</mi><mi>l</mi></mrow></msub></mfrac><mo>⋅</mo><mn>100</mn><mo>=</mo><mfrac><mfrac><mrow><mn>2,9</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>3</mn></mrow></msup><mi>A</mi></mrow><mrow><mn>2</mn><mo>⋅</mo><msqrt><mn>2</mn></msqrt><mo>⋅</mo><mn>2</mn><mo>⋅</mo><mn>50</mn><mtext> </mtext><mtext>hz</mtext><mo>⋅</mo><mn>2,4</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo><mn>6</mn></mrow></msup><mi>F</mi></mrow></mfrac><mrow><mn>10</mn><mtext> </mtext><mi>V</mi></mrow></mfrac><mo>⋅</mo><mn>100</mn><mo>=</mo><mn>42,72</mn><mi>%</mi></mstyle></math>
+			<br>
+			<math display="block" class="tml-display" style="display:block math;"><mstyle mathsize="1.2000em"><mn>2</mn><mo>⋅</mo><mi>f</mi><mo stretchy="false">→</mo><mtext>onda completa</mtext></mstyle></math>
+		`,
     },
 ]

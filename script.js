@@ -141,8 +141,7 @@ function cargarExamen() {
         } else if (p.tipo === "drag-drop") {
             html += `
                 <p class="instruccion-interactiva">
-                <span class="ayuda-pc">🖱️ Arrastrá la opción correcta al recuadro.</span>
-                <span class="ayuda-tactil">👆 Tocá la opción correcta y luego tocá el recuadro.</span>
+                <span class="ayuda-pc">Si estás en PC podes arrastrar, sino toca la opción correcta y luego el recuadro.</span>
                 </p>
 
                 <div class="img-zonas-container drag-drop-container">
@@ -192,7 +191,7 @@ function cargarExamen() {
         if (p.explicacion) {
             html += `
                 <div class="explicacion-oculta" style="display: none; margin-top: 10px; padding: 12px; background: #2d2d2d; border-left: 4px solid #FF9800; border-radius: 4px;">
-                <strong>💡 Explicación / Fórmula:</strong><br>
+                <strong>Explicación / Fórmula:</strong><br>
                 ${p.explicacion}
                 </div>`;
         }
@@ -262,25 +261,30 @@ function verificarEsta(boton) {
         }
     }
 
-    // 2. VALIDACIÓN: TEXTO LIBRE
-    const inputTexto = p.querySelector("input[type=text]");
-    if (inputTexto) {
-        const user = inputTexto.value;
-        const correcta = p.dataset.correct || "";
-        textoFinalRespuesta = correcta;
-        
-        if (user.trim() !== "") {
-            if (compararRespuestasTexto(user, correcta)) {
-                puntajePregunta = 1;
-                estado = "correcto";
-                inputTexto.insertAdjacentHTML('afterend', ' <span class="icon-feedback" style="color:green; font-weight:bold;">✔</span>');
-            } else {
-                inputTexto.insertAdjacentHTML('afterend', ' <span class="icon-feedback" style="color:red; font-weight:bold;">✘</span>');
-            }
-        }
-    }
+	// 2. VALIDACIÓN: TEXTO LIBRE
+	const inputTexto = p.querySelector("input[type=text]");
+	if (inputTexto) {
+		const user = inputTexto.value;
+		const correctaRaw = p.dataset.correct || "";
 
-    // 3. VALIDACIÓN: MENÚS DESPLEGABLES (SELECTS)
+		const correctasArray = correctaRaw.split('|').map(s => s.trim());
+
+		textoFinalRespuesta = correctasArray.join(' o ');
+
+		if (user.trim() !== "") {
+			const esCorrecta = correctasArray.some(opcionCorrecta => compararRespuestasTexto(user, opcionCorrecta));
+
+			if (esCorrecta) {
+				puntajePregunta = 1;
+				estado = "correcto";
+				inputTexto.insertAdjacentHTML('afterend', ' <span class="icon-feedback" style="color:green; font-weight:bold;">✔</span>');
+			} else {
+				inputTexto.insertAdjacentHTML('afterend', ' <span class="icon-feedback" style="color:red; font-weight:bold;">✘</span>');
+			}
+		}
+	}
+
+	// 3. VALIDACIÓN: MENÚS DESPLEGABLES (SELECTS)
     const selects = p.querySelectorAll("select");
     if (selects.length > 0) {
         let totalSelects = selects.length;
@@ -370,7 +374,7 @@ function verificarEsta(boton) {
         });
 
         if (htmlRespuestas !== '') {
-            textoFinalRespuesta = `Esta era la pieza correcta:<br>${htmlRespuestas}`;
+            textoFinalRespuesta = `Esta era la correcta:<br>${htmlRespuestas}`;
         } else {
             textoFinalRespuesta = "Revisá los colores en el diagrama.";
         }
