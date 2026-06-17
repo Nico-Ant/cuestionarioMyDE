@@ -175,4 +175,49 @@ const preguntasZener = [
 			<math display="block" class="tml-display" style="display:block math;"><mstyle mathsize="1.2000em"><mn>2</mn><mo>⋅</mo><mi>f</mi><mo stretchy="false">→</mo><mtext>onda completa</mtext></mstyle></math>
 		`,
     },
+    {
+        id: "21",
+        enunciado: "La resistencia máxima de polarización del zener me limita:",
+        tipo: "radio",
+        shuffle: true,
+        opciones: [
+            { val: "a", txt: "La corriente mínima que circula por el zener", esOk: true },
+            { val: "b", txt: "La corriente máxima que circula por el zener" },
+            { val: "c", txt: "La corriente mínima que circula por la carga" },
+            { val: "d", txt: "La corriente máxima que circula por el carga" },
+            { val: "e", txt: "La corriente total de la fuente" }
+        ],
+    },
+	{
+        id: "22",
+        enunciado: "Según el circuito de la imagen, cuál es la corriente que circula por el diodo zener?",
+		img: "../img/circuito_zener.webp",
+        tipo: "texto",
+        respuestaTexto: "20,11 mA"
+    },
+	{
+		id: "23",
+		enunciado: "¿Cómo se puede disminuir el ripple en una fuente con filtro capacitivo?",
+		tipo: "radio",
+		shuffle: true,
+		opciones: [
+			{ val: "a", txt: "cambiando el capacitor por uno que soporte mayor tensión" },
+			{ val: "b", txt: "aumentando la capacidad", esOk: true },
+			{ val: "c", txt: "disminuyendo la frecuencia" },
+			{ val: "d", txt: "sustituir el capacitor por uno de tantalio" },
+			{ val: "e", txt: "disminuyendo la capacidad" },
+		],
+	},
+	{
+		id: "24",
+		enunciado: "¿Es posible disminuir la tensión de ripple pasando de un rectificador de media onda a uno de onda completa?",
+		tipo: "radio",
+		shuffle: true,
+		opciones: [
+			{ val: "a", txt: "no, ya que la capacidad y la carga no varían" },
+			{ val: "b", txt: "solo si se dispone de un transformador con punto medio" },
+			{ val: "c", txt: "si, ya que aumenta la frecuencia", esOk: true },
+			{ val: "d", txt: "si, ya que el agregado de diodos provoca una mayor caída de tensión" },
+		],
+	}
 ]
